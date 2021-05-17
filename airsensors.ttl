@@ -1,0 +1,248 @@
+@prefix : <http://exampleonto.org/SensorNet/> .
+@prefix cdt: <http://w3id.org/lindt/custom_datatypes#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix geos: <http://www.opengis.net/ont/geosparql#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@base <http://exampleonto.org/SensorNet/> .
+
+<http://exampleonto.org/SensorNet/> rdf:type owl:Ontology .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://w3id.org/lindt/custom_datatypes#ucum
+cdt:ucum rdf:type rdfs:Datatype ;
+         rdfs:label "cdt:ucum"@en ;
+         owl:equivalentClass cdt:ucum .
+
+
+###  http://www.opengis.net/ont/geosparql#wktLiteral
+geos:wktLiteral rdf:type rdfs:Datatype ;
+                rdfs:label "geos:wktLiteral" ;
+                owl:equivalentClass geos:wktLiteral .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://exampleonto.org/SensorNet/hasChild
+:hasChild rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://exampleonto.org/SensorNet/hasParent
+:hasParent rdf:type owl:ObjectProperty .
+
+
+###  http://exampleonto.org/SensorNet/ownedBy
+:ownedBy rdf:type owl:ObjectProperty .
+
+
+###  http://exampleonto.org/SensorNet/tiedObservationsOf
+:tiedObservationsOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#hasGeometry
+geos:hasGeometry rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/sosa/hasFeatureOfInterest
+sosa:hasFeatureOfInterest rdf:type owl:ObjectProperty ;
+                          rdfs:label "hasFeatureOfInterest"@en .
+
+
+###  http://www.w3.org/ns/sosa/isSampleOf
+sosa:isSampleOf rdf:type owl:ObjectProperty ;
+                rdfs:label "isSampleOf"@en .
+
+
+###  http://www.w3.org/ns/sosa/madeBySensor
+sosa:madeBySensor rdf:type owl:ObjectProperty ;
+                  rdfs:label "madeBySensor"@en .
+
+
+###  http://www.w3.org/ns/sosa/observedProperty
+sosa:observedProperty rdf:type owl:ObjectProperty ;
+                      rdfs:label "observedProperty"@en .
+
+
+###  http://www.w3.org/ns/ssn/hasProperty
+ssn:hasProperty rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:label "hasProperty"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://exampleonto.org/SensorNet/tiedByTime
+:tiedByTime rdf:type owl:DatatypeProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#asWKT
+geos:asWKT rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/ns/sosa/hasSimpleResult
+sosa:hasSimpleResult rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/ns/sosa/resultTime
+sosa:resultTime rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://exampleonto.org/SensorNet/AirSensor
+:AirSensor rdf:type owl:Class ;
+           rdfs:subClassOf sosa:Sensor ;
+           rdfs:label "AirSensor"@en .
+
+
+###  http://exampleonto.org/SensorNet/SensorNetwork
+:SensorNetwork rdf:type owl:Class ;
+               rdfs:label "SensorNetwork"@en .
+
+
+###  http://exampleonto.org/SensorNet/TiedObservations
+:TiedObservations rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/geosparql#Feature
+geos:Feature rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/geosparql#Geometry
+geos:Geometry rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/FeatureOfInterest
+sosa:FeatureOfInterest rdf:type owl:Class ;
+                       rdfs:label "FeatureOfInterest"@en .
+
+
+###  http://www.w3.org/ns/sosa/ObservableProperty
+sosa:ObservableProperty rdf:type owl:Class ;
+                        rdfs:label "ObservableProperty"@en .
+
+
+###  http://www.w3.org/ns/sosa/Observation
+sosa:Observation rdf:type owl:Class ;
+                 rdfs:label "Observation"@en .
+
+
+###  http://www.w3.org/ns/sosa/Sample
+sosa:Sample rdf:type owl:Class ;
+            rdfs:subClassOf sosa:FeatureOfInterest ;
+            rdfs:label "Sample"@en .
+
+
+###  http://www.w3.org/ns/sosa/Sensor
+sosa:Sensor rdf:type owl:Class ;
+            rdfs:label "Sensor"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://exampleonto.org/SensorNet/Air
+:Air rdf:type owl:NamedIndividual ,
+              sosa:FeatureOfInterest ;
+     rdfs:label "Air"@en .
+
+
+###  http://exampleonto.org/SensorNet/AirHumidity
+:AirHumidity rdf:type owl:NamedIndividual ,
+                      sosa:ObservableProperty ;
+             rdfs:label "AirHumidity"@en .
+
+
+###  http://exampleonto.org/SensorNet/AirPressure
+:AirPressure rdf:type owl:NamedIndividual ,
+                      sosa:ObservableProperty ;
+             rdfs:label "AirPressure"@en .
+
+
+###  http://exampleonto.org/SensorNet/AirTemperature
+:AirTemperature rdf:type owl:NamedIndividual ,
+                         sosa:ObservableProperty ;
+                rdfs:label "AirTemperature"@en .
+
+
+###  http://exampleonto.org/SensorNet/PM2.5
+:PM2.5 rdf:type owl:NamedIndividual ,
+                sosa:ObservableProperty ;
+       rdfs:label "PM2.5"@en .
+
+
+###  http://exampleonto.org/SensorNet/PurpleAir
+:PurpleAir rdf:type owl:NamedIndividual ,
+                    :SensorNetwork ;
+           rdfs:label "PurpleAir"@en .
+
+
+###  http://exampleonto.org/SensorNet/Air?sensorid=26695
+<http://exampleonto.org/SensorNet/Air?sensorid=26695> rdf:type owl:NamedIndividual ;
+                                                      sosa:isSampleOf :Air ;
+                                                      rdfs:label "Air?sensorid=26695"@en .
+
+
+###  http://exampleonto.org/SensorNet/location?type=airsensor&id=26695
+<http://exampleonto.org/SensorNet/location?type=airsensor&id=26695> rdf:type owl:NamedIndividual ,
+                                                                             geos:Geometry ;
+                                                                    geos:asWKT "POINT(-6.273795 53.360861)"^^geos:wktLiteral .
+
+
+###  http://exampleonto.org/SensorNet/observation?sensorid=26695&var=airhumidity&time=1620379531
+<http://exampleonto.org/SensorNet/observation?sensorid=26695&var=airhumidity&time=1620379531> rdf:type owl:NamedIndividual ,
+                                                                                                       sosa:Observation ;
+                                                                                              :hasParent <http://exampleonto.org/SensorNet/tied_observations?sensorid=26695&time=1620379531> ;
+                                                                                              sosa:hasFeatureOfInterest <http://exampleonto.org/SensorNet/Air?sensorid=26695> ;
+                                                                                              sosa:madeBySensor <http://exampleonto.org/SensorNet/sensor?id=26695> ;
+                                                                                              sosa:observedProperty :AirHumidity ;
+                                                                                              sosa:hasSimpleResult "0.34"^^xsd:float ;
+                                                                                              sosa:resultTime "2021-05-07T09:25:31Z"^^xsd:dateTime .
+
+
+###  http://exampleonto.org/SensorNet/observation?sensorid=26695&var=pm25&time=1620379531
+<http://exampleonto.org/SensorNet/observation?sensorid=26695&var=pm25&time=1620379531> rdf:type owl:NamedIndividual ,
+                                                                                                sosa:Observation ;
+                                                                                       :hasParent <http://exampleonto.org/SensorNet/tied_observations?sensorid=26695&time=1620379531> ;
+                                                                                       sosa:hasFeatureOfInterest <http://exampleonto.org/SensorNet/Air?sensorid=26695> ;
+                                                                                       sosa:madeBySensor <http://exampleonto.org/SensorNet/sensor?id=26695> ;
+                                                                                       sosa:observedProperty :PM2.5 ;
+                                                                                       sosa:hasSimpleResult "5.78 ug/m3"^^cdt:ucum ;
+                                                                                       sosa:resultTime "2021-05-07T09:25:31Z"^^xsd:dateTime ;
+                                                                                       rdfs:label "observation?sensorid=26695&var=pm25&time=1620379531"@en .
+
+
+###  http://exampleonto.org/SensorNet/sensor?id=26695
+<http://exampleonto.org/SensorNet/sensor?id=26695> rdf:type owl:NamedIndividual ,
+                                                            :AirSensor ,
+                                                            geos:Feature ;
+                                                   :ownedBy :PurpleAir ;
+                                                   geos:hasGeometry <http://exampleonto.org/SensorNet/location?type=airsensor&id=26695> ;
+                                                   rdfs:label "sensor?id=26695"@en .
+
+
+###  http://exampleonto.org/SensorNet/tied_observations?sensorid=26695&time=1620379531
+<http://exampleonto.org/SensorNet/tied_observations?sensorid=26695&time=1620379531> rdf:type owl:NamedIndividual ,
+                                                                                             :TiedObservations ;
+                                                                                    :tiedObservationsOf <http://exampleonto.org/SensorNet/sensor?id=26695> ;
+                                                                                    :tiedByTime 1620379531 .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
